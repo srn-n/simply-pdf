@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--
+      Background of the launch screen and of the window behind the app, before
+      the app has told Android its theme (first launch, or a fresh install).
+      After that, MainActivity paints the saved theme colour instead.
+      Light phones: Paper. Dark phones (values-night): Carbon. These match the
+      app's own default ("Match device").
+    -->
+    <color name="launch_bg">#F2EFE8</color>
+</resources>

@@ -1,0 +1,1119 @@
+@import 'tailwindcss';
+
+@custom-variant dark (&:where([data-scheme='dark'], [data-scheme='dark'] *));
+
+/*
+ * Paper under glass. Documents are paper; the controls that float over them
+ * are liquid glass. Six themes, three light and three dark, each named after a real piece of stationery,
+ * the way the studio's other apps name theirs after real objects.
+ */
+:root,
+:root[data-theme='paper'] {
+  --paper: #f2efe8;
+  --sheet: #fbfaf6;
+  --sunk: #e8e4da;
+  --ink: #15161a;
+  --ink-2: #4b4d55;
+  --ink-3: #74767e;
+  --rule: #dbd6ca;
+  --rule-strong: #c2bcae;
+  --accent: #0b4a40;
+  --accent-ink: #f2efe8;
+  --accent-soft: #d3e4dd;
+  --mark: #e4f066;
+  --danger: #b42318;
+  --danger-soft: #f7e0dc;
+  --blob-a: #e4f066;
+  --blob-b: #a9dcc8;
+  --blob-c: #f6c9a4;
+  --tile: color-mix(in srgb, var(--mark) 55%, var(--sheet));
+  --shadow: 0 1px 0 rgb(21 22 26 / 0.04), 0 10px 28px -14px rgb(21 22 26 / 0.22);
+  --glass-bg: rgb(251 250 246 / 0.62);
+  --glass-sheen: rgb(255 255 255 / 0.55);
+  --glass-edge: rgb(255 255 255 / 0.85);
+  --glass-line: rgb(21 22 26 / 0.08);
+  --grain-opacity: 0.05;
+  color-scheme: light;
+}
+
+/* Carbon copy: blue-black sheets, the violet-blue of carbon paper. */
+:root[data-theme='carbon'] {
+  --paper: #0b0c12;
+  --sheet: #14161f;
+  --sunk: #08090d;
+  --ink: #eceef4;
+  --ink-2: #a6abb8;
+  --ink-3: #737888;
+  --rule: #232633;
+  --rule-strong: #363a4b;
+  --accent: #9aa5ff;
+  --accent-ink: #0b0c12;
+  --accent-soft: #1c2042;
+  --mark: #d6e65a;
+  --danger: #ff8b7b;
+  --danger-soft: #3a1712;
+  --blob-a: #3a3fbf;
+  --blob-b: #1f7a68;
+  --blob-c: #6a3fd1;
+  --tile: color-mix(in srgb, var(--accent) 20%, var(--sheet));
+  --shadow: 0 1px 0 rgb(0 0 0 / 0.35), 0 14px 34px -16px rgb(0 0 0 / 0.75);
+  --glass-bg: rgb(20 22 31 / 0.58);
+  --glass-sheen: rgb(255 255 255 / 0.07);
+  --glass-edge: rgb(255 255 255 / 0.14);
+  --glass-line: rgb(255 255 255 / 0.07);
+  --grain-opacity: 0.07;
+  color-scheme: dark;
+}
+
+/* Legal pad: canary yellow, navy ballpoint, the red margin rule. */
+:root[data-theme='legal'] {
+  --paper: #fbf3c4;
+  --sheet: #fffbe2;
+  --sunk: #f1e6a8;
+  --ink: #1d2433;
+  --ink-2: #474f64;
+  --ink-3: #6b7083;
+  --rule: #e6d98f;
+  --rule-strong: #cdbd6a;
+  --accent: #c8322b;
+  --accent-ink: #fffbe2;
+  --accent-soft: #f7d9c6;
+  --mark: #a8d8ff;
+  --danger: #a3221b;
+  --danger-soft: #f6d2c8;
+  --blob-a: #ffd84d;
+  --blob-b: #a8d8ff;
+  --blob-c: #ffa48f;
+  --tile: color-mix(in srgb, var(--mark) 45%, var(--sheet));
+  --shadow: 0 1px 0 rgb(29 36 51 / 0.05), 0 10px 26px -14px rgb(90 70 0 / 0.3);
+  --glass-bg: rgb(255 251 226 / 0.6);
+  --glass-sheen: rgb(255 255 255 / 0.6);
+  --glass-edge: rgb(255 255 255 / 0.9);
+  --glass-line: rgb(29 36 51 / 0.09);
+  --grain-opacity: 0.05;
+  color-scheme: light;
+}
+
+/* Tracing paper: cool, frosted, almost see-through. The glassiest theme. */
+:root[data-theme='tracing'] {
+  --paper: #edf1f3;
+  --sheet: #f8fafb;
+  --sunk: #e1e7eb;
+  --ink: #172028;
+  --ink-2: #45515c;
+  --ink-3: #66727d;
+  --rule: #d3dbe1;
+  --rule-strong: #b5c1ca;
+  --accent: #2b55d1;
+  --accent-ink: #f8fafb;
+  --accent-soft: #dbe5ff;
+  --mark: #9df2ff;
+  --danger: #b42318;
+  --danger-soft: #f7e0dc;
+  --blob-a: #9fd6ff;
+  --blob-b: #c7b8ff;
+  --blob-c: #9ff0d8;
+  --tile: color-mix(in srgb, var(--mark) 40%, var(--sheet));
+  --shadow: 0 1px 0 rgb(23 32 40 / 0.04), 0 10px 28px -14px rgb(30 60 90 / 0.25);
+  --glass-bg: rgb(248 250 251 / 0.5);
+  --glass-sheen: rgb(255 255 255 / 0.7);
+  --glass-edge: rgb(255 255 255 / 0.95);
+  --glass-line: rgb(23 32 40 / 0.08);
+  --grain-opacity: 0.035;
+  color-scheme: light;
+}
+
+/* Darkroom: near-black, the red safelight, prints drying under amber. */
+:root[data-theme='darkroom'] {
+  --paper: #120c0c;
+  --sheet: #1c1414;
+  --sunk: #0b0707;
+  --ink: #f1e6e1;
+  --ink-2: #c0aaa3;
+  --ink-3: #8f7a73;
+  --rule: #2e2120;
+  --rule-strong: #47332f;
+  --accent: #ff5a4e;
+  --accent-ink: #120c0c;
+  --accent-soft: #3a1714;
+  --mark: #ffb547;
+  --danger: #ff8a7a;
+  --danger-soft: #3a1712;
+  --blob-a: #b3261e;
+  --blob-b: #c25a1c;
+  --blob-c: #5a1a3a;
+  --tile: color-mix(in srgb, var(--accent) 18%, var(--sheet));
+  --shadow: 0 1px 0 rgb(0 0 0 / 0.4), 0 14px 34px -16px rgb(0 0 0 / 0.8);
+  --glass-bg: rgb(28 20 20 / 0.58);
+  --glass-sheen: rgb(255 220 210 / 0.06);
+  --glass-edge: rgb(255 200 190 / 0.13);
+  --glass-line: rgb(255 255 255 / 0.06);
+  --grain-opacity: 0.08;
+  color-scheme: dark;
+}
+
+/* Slate: a school chalkboard, chalk-white writing, yellow chalk for marks. */
+:root[data-theme='slate'] {
+  --paper: #0f1714;
+  --sheet: #17221e;
+  --sunk: #0a100e;
+  --ink: #e8efe9;
+  --ink-2: #a7b8ae;
+  --ink-3: #74887d;
+  --rule: #24332d;
+  --rule-strong: #375147;
+  --accent: #7fe0b0;
+  --accent-ink: #0f1714;
+  --accent-soft: #163428;
+  --mark: #f4e27a;
+  --danger: #ff9585;
+  --danger-soft: #3a1712;
+  --blob-a: #1f6b4f;
+  --blob-b: #2d5f7a;
+  --blob-c: #5d7f2e;
+  --tile: color-mix(in srgb, var(--accent) 16%, var(--sheet));
+  --shadow: 0 1px 0 rgb(0 0 0 / 0.35), 0 14px 34px -16px rgb(0 0 0 / 0.75);
+  --glass-bg: rgb(23 34 30 / 0.58);
+  --glass-sheen: rgb(220 255 235 / 0.06);
+  --glass-edge: rgb(220 255 235 / 0.13);
+  --glass-line: rgb(255 255 255 / 0.06);
+  --grain-opacity: 0.1;
+  color-scheme: dark;
+}
+
+/*
+ * Motion. Springs for anything a finger touched (the studio's overshoot
+ * curve); expo-out for things that move on their own. Gentle keeps the
+ * movement but drops the overshoot; Off removes it.
+ */
+:root {
+  --spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+  --spring-strong: cubic-bezier(0.34, 1.8, 0.5, 1);
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-io: cubic-bezier(0.76, 0, 0.24, 1);
+}
+:root[data-motion='gentle'] {
+  --spring: cubic-bezier(0.16, 1, 0.3, 1);
+  --spring-strong: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@theme inline {
+  --font-sans: 'Hanken Grotesk Variable', 'Hanken Grotesk', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --font-mono: 'Martian Mono', ui-monospace, 'SFMono-Regular', Menlo, monospace;
+  --font-script: 'Caveat', 'Segoe Script', cursive;
+
+  --color-paper: var(--paper);
+  --color-sheet: var(--sheet);
+  --color-sunk: var(--sunk);
+  --color-ink: var(--ink);
+  --color-ink-2: var(--ink-2);
+  --color-ink-3: var(--ink-3);
+  --color-rule: var(--rule);
+  --color-rule-strong: var(--rule-strong);
+  --color-accent: var(--accent);
+  --color-accent-ink: var(--accent-ink);
+  --color-accent-soft: var(--accent-soft);
+  --color-mark: var(--mark);
+  --color-danger: var(--danger);
+  --color-danger-soft: var(--danger-soft);
+
+  --shadow-sheet: var(--shadow);
+  --ease-out-soft: var(--ease-out);
+  --ease-spring: var(--spring);
+  --color-tile: var(--tile);
+}
+
+@layer base {
+  html {
+    -webkit-text-size-adjust: 100%;
+    text-rendering: optimizeLegibility;
+    -webkit-tap-highlight-color: transparent;
+    scroll-padding-top: 5rem;
+    /* Keep focused or scrolled-to controls clear of the floating glass bars. */
+    scroll-padding-bottom: 9rem;
+  }
+  body {
+    @apply bg-paper text-ink font-sans antialiased;
+    font-feature-settings: 'ss01', 'cv11';
+    min-height: 100dvh;
+  }
+  ::selection {
+    background: var(--mark);
+    color: #15161a;
+  }
+  :focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+    border-radius: 6px;
+  }
+  button,
+  [role='button'],
+  label[for] {
+    cursor: pointer;
+    touch-action: manipulation;
+  }
+  button:disabled {
+    cursor: not-allowed;
+  }
+  input[type='range'] {
+    accent-color: var(--ink);
+  }
+}
+
+/* Numbers that matter are set in the mono and never jiggle as they change. */
+.num {
+  font-family: var(--font-mono);
+  font-variant-numeric: tabular-nums;
+  letter-spacing: -0.02em;
+}
+
+/* A highlighter stroke behind a word, slightly uneven, like a real pen. */
+.marker {
+  background-image: linear-gradient(104deg, transparent 0.4em, var(--mark) 0.5em, var(--mark) calc(100% - 0.3em), transparent calc(100% - 0.2em));
+  background-size: 100% 0.62em;
+  background-position: 0 88%;
+  background-repeat: no-repeat;
+  padding: 0 0.08em;
+  margin: 0 -0.08em;
+  color: inherit;
+}
+:root[data-scheme='dark'] .marker {
+  color: #15161a;
+  background-size: 100% 0.9em;
+  background-position: 0 70%;
+}
+
+.eyebrow {
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  line-height: 1rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+}
+
+/* Dot leaders for the table-of-contents tool index. */
+.leader {
+  flex: 1;
+  min-width: 1.5rem;
+  border-bottom: 1.5px dotted var(--rule-strong);
+  transform: translateY(-0.3em);
+}
+
+.no-scrollbar {
+  scrollbar-width: none;
+}
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+/* Thin page-like scrollbars on desktop. */
+@media (pointer: fine) {
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: var(--rule-strong) transparent;
+  }
+}
+
+/* The "done" stamp: slammed onto the page with a spring, like a rubber stamp. */
+@keyframes stamp {
+  0% {
+    opacity: 0;
+    transform: rotate(-18deg) scale(2.2);
+  }
+  55% {
+    opacity: 1;
+    transform: rotate(-7deg) scale(0.9);
+  }
+  75% {
+    transform: rotate(-9deg) scale(1.04);
+  }
+  100% {
+    opacity: 1;
+    transform: rotate(-8deg) scale(1);
+  }
+}
+.stamp {
+  animation: stamp 560ms var(--spring) 120ms both;
+}
+
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+.seen .rise {
+  animation: none;
+}
+.rise {
+  animation: rise 520ms var(--ease-out-soft) both;
+  animation-delay: calc(var(--i, 0) * 45ms);
+}
+
+@keyframes indeterminate {
+  from {
+    transform: translateX(-100%);
+  }
+  to {
+    transform: translateX(250%);
+  }
+}
+
+.safe-bottom {
+  padding-bottom: max(0.75rem, env(safe-area-inset-bottom));
+}
+.safe-top {
+  padding-top: env(safe-area-inset-top);
+}
+
+
+/* ------------------------------------------------------------------------
+ * Liquid glass. Saturated blur, a sheen from the top, a bright inner edge and
+ * a hairline outline, the same recipe as WorkRoaster's glass.
+ * --------------------------------------------------------------------- */
+.glass {
+  background: linear-gradient(180deg, var(--glass-sheen), transparent 55%), var(--glass-bg);
+  -webkit-backdrop-filter: saturate(180%) blur(28px);
+  backdrop-filter: saturate(180%) blur(28px);
+  border: 1px solid var(--glass-line);
+  box-shadow:
+    inset 0 1px 0 var(--glass-edge),
+    inset 0 -1px 0 rgb(0 0 0 / 0.03),
+    var(--shadow);
+}
+
+/* Navigation chrome sits over text, so it gets denser glass: legible first,
+ * translucent second (the lesson of iOS 26's first Liquid Glass release). */
+.glass-strong {
+  background: linear-gradient(180deg, var(--glass-sheen), transparent 55%), color-mix(in srgb, var(--sheet) 86%, transparent);
+  -webkit-backdrop-filter: saturate(180%) blur(32px);
+  backdrop-filter: saturate(180%) blur(32px);
+}
+
+/* Ink blots of the theme's colours drifting slowly behind everything, so the
+ * glass always has something to bend. */
+.ambient {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  overflow: hidden;
+  pointer-events: none;
+}
+/* Soft-edged radial gradients rather than a blur filter: they look the same
+ * and cost a phone's GPU almost nothing, even while drifting under glass. */
+.ambient i {
+  position: absolute;
+  width: 80vmax;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  opacity: 0.55;
+  will-change: transform;
+  background: radial-gradient(closest-side, var(--blob), transparent);
+}
+.ambient i:nth-child(1) {
+  --blob: var(--blob-a);
+  left: -30vmax;
+  top: -25vmax;
+  animation: drift-a 26s var(--ease-io) infinite alternate;
+}
+.ambient i:nth-child(2) {
+  --blob: var(--blob-b);
+  right: -35vmax;
+  top: 25vh;
+  animation: drift-b 32s var(--ease-io) infinite alternate;
+}
+.ambient i:nth-child(3) {
+  --blob: var(--blob-c);
+  left: -10vmax;
+  bottom: -45vmax;
+  opacity: 0.4;
+  animation: drift-c 38s var(--ease-io) infinite alternate;
+}
+:root[data-scheme='dark'] .ambient i {
+  opacity: 0.45;
+}
+@keyframes drift-a {
+  to {
+    transform: translate(18vmax, 14vmax) scale(1.15);
+  }
+}
+@keyframes drift-b {
+  to {
+    transform: translate(-16vmax, 10vmax) scale(0.9);
+  }
+}
+@keyframes drift-c {
+  to {
+    transform: translate(14vmax, -12vmax) scale(1.1);
+  }
+}
+
+/* Paper grain over the whole app; chalkier on Slate, finer on Tracing Paper. */
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: 70;
+  pointer-events: none;
+  opacity: var(--grain-opacity);
+  /* plain alpha, no blend mode or filter: those force the whole screen to be
+   * recomposited on every frame */
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .9 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+:root[data-scheme='dark'] body::after {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 .9 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* Legal pad's red margin rule down the left of every screen. */
+:root[data-theme='legal'] body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 10px;
+  width: 1.5px;
+  background: rgb(200 50 43 / 0.35);
+  box-shadow: 4px 0 0 rgb(200 50 43 / 0.2);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ------------------------------------------------------------------------
+ * Touch. Things you press squash a little and spring back.
+ * --------------------------------------------------------------------- */
+.press {
+  transition:
+    transform 520ms var(--spring),
+    background-color 160ms ease,
+    border-color 160ms ease,
+    color 160ms ease,
+    opacity 160ms ease,
+    box-shadow 200ms ease;
+}
+.press:active:not(:disabled):not([aria-disabled='true']) {
+  transform: scale(0.94, 0.9);
+  transition-duration: 90ms, 160ms, 160ms, 160ms, 160ms, 200ms;
+  transition-timing-function: ease-out;
+}
+.press-soft:active:not(:disabled) {
+  transform: scale(0.97);
+}
+
+/* A row in a list: lifts its icon tile on press. */
+.row-pop:active .tile {
+  transform: scale(0.86) rotate(-6deg);
+  transition-duration: 90ms;
+}
+.tile {
+  transition: transform 560ms var(--spring-strong);
+}
+
+/* Jelly wobble, borrowed from Puffkin, for a drop target being hovered. */
+@keyframes jelly {
+  0% {
+    transform: scale(1);
+  }
+  35% {
+    transform: scale(1.04, 0.96);
+  }
+  60% {
+    transform: scale(0.98, 1.03);
+  }
+  100% {
+    transform: scale(1.01);
+  }
+}
+.jelly {
+  animation: jelly 620ms var(--spring) both;
+}
+
+/* The sheet stack on the drop zone breathes while it waits. */
+@keyframes breathe {
+  0%,
+  100% {
+    transform: translateY(0) rotate(var(--r, 0deg));
+  }
+  50% {
+    transform: translateY(-3px) rotate(calc(var(--r, 0deg) * 1.4));
+  }
+}
+.breathe {
+  animation: breathe 3.6s var(--ease-io) infinite;
+}
+
+/* Screens enter by rising out of the paper, a beat apart. */
+@keyframes glass-rise {
+  from {
+    opacity: 0;
+    transform: translateY(14px) scale(0.985);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+.enter > * {
+  animation: glass-rise 560ms var(--ease-out) backwards;
+}
+.enter > *:nth-child(2) {
+  animation-delay: 50ms;
+}
+.enter > *:nth-child(3) {
+  animation-delay: 100ms;
+}
+.enter > *:nth-child(n + 4) {
+  animation-delay: 150ms;
+}
+
+/* The floating tab bar's active blob: it slides with a spring and stretches
+ * like a drop of liquid while it moves. */
+.tab-blob {
+  transition: transform 560ms var(--spring);
+}
+@keyframes blob-stretch {
+  0% {
+    scale: 1 1;
+  }
+  40% {
+    scale: 1.28 0.86;
+  }
+  100% {
+    scale: 1 1;
+  }
+}
+.tab-blob > span {
+  animation: blob-stretch 520ms var(--ease-out);
+}
+@keyframes icon-hop {
+  0% {
+    transform: translateY(0);
+  }
+  40% {
+    transform: translateY(-5px) scale(1.12);
+  }
+  100% {
+    transform: none;
+  }
+}
+.hop {
+  animation: icon-hop 480ms var(--spring) both;
+}
+
+/* Toasts drop in from the glass bar with a little overshoot. */
+@keyframes toast-in {
+  from {
+    opacity: 0;
+    transform: translateY(18px) scale(0.92);
+  }
+}
+.toast-in {
+  animation: toast-in 520ms var(--spring) both;
+}
+
+/* The finished card gets a soft thump as the DONE stamp lands. */
+@keyframes thump {
+  0%,
+  100% {
+    transform: none;
+  }
+  55% {
+    transform: translateY(2px) scale(0.995);
+  }
+}
+.thump {
+  animation: thump 420ms var(--ease-out) 300ms both;
+}
+
+/* ------------------------------------------------------------------------
+ * Motion off: everything holds still (also the default when the phone asks
+ * for reduced motion). Gentle is handled by the curves above.
+ * --------------------------------------------------------------------- */
+:root[data-motion='off'] *,
+:root[data-motion='off'] *::before,
+:root[data-motion='off'] *::after {
+  animation-duration: 1ms !important;
+  animation-delay: 0ms !important;
+  animation-iteration-count: 1 !important;
+  transition-duration: 1ms !important;
+}
+:root[data-motion='off'] .ambient i {
+  animation: none !important;
+}
+
+/* ------------------------------------------------------------------------
+ * Launch screen (~5 s). Same two-act shape as Bouncy Calculator's:
+ *
+ *   0.0 – 2.0 s  STUDIO CARD: two capsules slide together and lock, the
+ *                studio name sharpens out of a blur, "presents".
+ *   2.0 – 2.4 s  the card lifts away; the studio name stays as a header.
+ *   2.2 – 4.5 s  THE DESK: three sheets fly in and stack, lines write
+ *                themselves, a highlighter swipes, the DONE stamp lands,
+ *                "Simply PDF" bounces in, the counter runs to 100 %.
+ *   4.5 – 5.0 s  the desk zooms toward you and dissolves (JS adds .is-leaving).
+ *
+ * Every Act 2 timing is an offset from --c. Theme colours throughout.
+ * --------------------------------------------------------------------- */
+.splash {
+  --c: 2200ms;
+  position: fixed;
+  inset: 0;
+  z-index: 80;
+  display: grid;
+  grid-template-rows: 1fr auto 1fr auto;
+  justify-items: center;
+  align-items: center;
+  padding: calc(env(safe-area-inset-top) + 24px) 24px calc(env(safe-area-inset-bottom) + 20px);
+  background:
+    radial-gradient(60% 45% at 50% 46%, color-mix(in srgb, var(--blob-a) 38%, transparent), transparent 70%),
+    radial-gradient(50% 40% at 80% 90%, color-mix(in srgb, var(--blob-b) 30%, transparent), transparent 70%),
+    var(--paper);
+  color: var(--ink);
+  user-select: none;
+  -webkit-user-select: none;
+  overflow: hidden;
+  /* never trap anyone if the script fails */
+  animation: sp-failsafe 400ms ease 8s forwards;
+}
+@keyframes sp-failsafe {
+  to {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+  }
+}
+.splash.is-leaving {
+  animation: sp-out 480ms var(--ease-io) forwards;
+}
+.splash.is-leaving .sp-stage {
+  animation: sp-zoom 480ms var(--ease-io) forwards;
+}
+@keyframes sp-out {
+  to {
+    opacity: 0;
+    visibility: hidden;
+  }
+}
+@keyframes sp-zoom {
+  to {
+    transform: scale(1.35);
+    filter: blur(8px);
+  }
+}
+@keyframes sp-fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* the studio mark: two offset capsules that slide together and lock */
+.sp-mark {
+  position: relative;
+  display: inline-block;
+  width: 22px;
+  height: 20px;
+  flex: none;
+}
+.sp-mark i {
+  position: absolute;
+  width: 17px;
+  height: 9px;
+  border-radius: 9px;
+  background: currentColor;
+}
+.sp-mark i:first-child {
+  top: 0;
+  right: 0;
+}
+.sp-mark i:last-child {
+  bottom: 0;
+  left: 0;
+}
+.sp-mark.big {
+  width: 60px;
+  height: 55px;
+  animation: sp-lock 360ms var(--ease-out) 880ms;
+}
+.sp-mark.big i {
+  width: 46px;
+  height: 24px;
+  border-radius: 24px;
+}
+.sp-mark.big i:first-child {
+  animation: sp-cap-r 820ms var(--spring) 100ms both;
+}
+.sp-mark.big i:last-child {
+  background: var(--accent);
+  animation: sp-cap-l 820ms var(--spring) 180ms both;
+}
+@keyframes sp-cap-r {
+  0% {
+    transform: translateX(46px);
+    opacity: 0;
+  }
+  70% {
+    transform: translateX(-3px);
+    opacity: 1;
+  }
+}
+@keyframes sp-cap-l {
+  0% {
+    transform: translateX(-46px);
+    opacity: 0;
+  }
+  70% {
+    transform: translateX(3px);
+    opacity: 1;
+  }
+}
+@keyframes sp-lock {
+  50% {
+    transform: scale(0.94, 1.06);
+  }
+}
+
+/* Act 1 */
+.sp-intro {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-content: center;
+  justify-items: center;
+  gap: 18px;
+  text-align: center;
+  pointer-events: none;
+  animation: sp-intro-out 520ms cubic-bezier(0.5, 0, 0.2, 1) 1950ms forwards;
+}
+@keyframes sp-intro-out {
+  to {
+    opacity: 0;
+    transform: translateY(-18px) scale(0.92);
+    filter: blur(4px);
+    visibility: hidden;
+  }
+}
+.sp-studio {
+  font-size: clamp(24px, 7vw, 32px);
+  font-weight: 650;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+  opacity: 0;
+  animation: sp-name-in 900ms var(--ease-out) 550ms forwards;
+}
+.sp-studio::after {
+  content: '';
+  display: block;
+  width: 64px;
+  height: 2px;
+  margin: 12px auto 0;
+  border-radius: 2px;
+  background: var(--accent);
+  transform: scaleX(0);
+  animation: sp-rule 700ms var(--ease-out) 900ms forwards;
+}
+@keyframes sp-name-in {
+  from {
+    opacity: 0;
+    letter-spacing: 0.12em;
+    filter: blur(6px);
+  }
+  to {
+    opacity: 1;
+    letter-spacing: -0.02em;
+    filter: blur(0);
+  }
+}
+@keyframes sp-rule {
+  to {
+    transform: scaleX(1);
+  }
+}
+.sp-presents {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+  opacity: 0;
+  animation: sp-fade-up 600ms var(--ease-out) 1150ms forwards;
+}
+
+/* Act 2 header */
+.sp-header {
+  align-self: end;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 28px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+  opacity: 0;
+  animation: sp-fade-up 600ms var(--ease-out) calc(var(--c) - 100ms) forwards;
+}
+.sp-header .sp-mark {
+  color: var(--ink);
+}
+.sp-header .sp-mark i:last-child {
+  background: var(--accent);
+}
+
+/* Act 2: the desk */
+.sp-stage {
+  display: grid;
+  justify-items: center;
+  gap: 16px;
+}
+.sp-desk {
+  position: relative;
+  width: min(176px, 46vw);
+  aspect-ratio: 210 / 270;
+}
+.sp-sheet {
+  position: absolute;
+  inset: 0;
+  border-radius: 10px;
+  background: var(--sheet);
+  border: 1px solid var(--rule);
+  box-shadow: 0 18px 40px -22px rgb(0 0 0 / 0.45);
+}
+.sp-sheet.s1 {
+  animation: sp-in-left 720ms var(--spring) var(--c) both;
+}
+.sp-sheet.s2 {
+  animation: sp-in-right 720ms var(--spring) calc(var(--c) + 90ms) both;
+}
+.sp-sheet.s3 {
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+  padding: 26px 20px;
+  overflow: hidden;
+  animation:
+    sp-drop 720ms var(--spring) calc(var(--c) + 180ms) both,
+    thump 420ms var(--ease-out) calc(var(--c) + 1520ms);
+}
+@keyframes sp-in-left {
+  from {
+    transform: translate(-120%, 10%) rotate(-30deg);
+    opacity: 0;
+  }
+  to {
+    transform: rotate(-8deg) translate(-8px, 4px);
+    opacity: 1;
+  }
+}
+@keyframes sp-in-right {
+  from {
+    transform: translate(120%, -6%) rotate(28deg);
+    opacity: 0;
+  }
+  to {
+    transform: rotate(6deg) translate(8px, 2px);
+    opacity: 1;
+  }
+}
+@keyframes sp-drop {
+  from {
+    transform: translateY(-90%) scale(1.1);
+    opacity: 0;
+  }
+  70% {
+    transform: translateY(2%) scale(0.98, 1.02);
+    opacity: 1;
+  }
+  to {
+    transform: none;
+    opacity: 1;
+  }
+}
+/* lines writing themselves */
+.sp-sheet b {
+  display: block;
+  height: 7px;
+  border-radius: 4px;
+  background: var(--rule);
+  transform-origin: left;
+  transform: scaleX(0);
+  animation: sp-write 460ms var(--ease-out) forwards;
+}
+.sp-sheet b.t {
+  height: 11px;
+  width: 70%;
+  background: var(--ink);
+  animation-delay: calc(var(--c) + 520ms);
+}
+.sp-sheet b:nth-child(2) {
+  animation-delay: calc(var(--c) + 600ms);
+}
+.sp-sheet b:nth-child(3) {
+  animation-delay: calc(var(--c) + 670ms);
+}
+.sp-sheet b:nth-child(4) {
+  animation-delay: calc(var(--c) + 740ms);
+}
+.sp-sheet b.short {
+  width: 55%;
+  animation-delay: calc(var(--c) + 810ms);
+}
+@keyframes sp-write {
+  to {
+    transform: scaleX(1);
+  }
+}
+/* the highlighter swipe */
+.sp-sheet b.hl {
+  position: relative;
+  overflow: visible;
+}
+.sp-sheet b.hl::before {
+  content: '';
+  position: absolute;
+  inset: -4px -6px;
+  border-radius: 3px;
+  background: var(--mark);
+  opacity: 0.9;
+  mix-blend-mode: multiply;
+  transform-origin: left;
+  transform: scaleX(0) skewX(-8deg);
+  animation: sp-swipe 420ms cubic-bezier(0.6, 0, 0.3, 1) calc(var(--c) + 1020ms) forwards;
+}
+:root[data-scheme='dark'] .sp-sheet b.hl::before {
+  mix-blend-mode: normal;
+  opacity: 1;
+}
+:root[data-scheme='dark'] .sp-sheet b.hl {
+  background: transparent;
+}
+@keyframes sp-swipe {
+  to {
+    transform: scaleX(1) skewX(-8deg);
+  }
+}
+/* the DONE stamp */
+.sp-stamp {
+  position: absolute;
+  right: 12px;
+  bottom: 18px;
+  padding: 4px 10px;
+  border: 2.5px solid var(--accent);
+  border-radius: 6px;
+  font-family: var(--font-mono);
+  font-size: 15px;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--accent);
+  opacity: 0;
+  animation: stamp 560ms var(--spring) calc(var(--c) + 1400ms) both;
+}
+
+/* "Simply PDF", letter by letter */
+.sp-word {
+  display: flex;
+  margin-top: 8px;
+  font-size: 30px;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+}
+.sp-word span {
+  display: inline-block;
+  opacity: 0;
+  animation: sp-letter 680ms var(--spring) calc(var(--c) + 1100ms + var(--i) * 55ms) forwards;
+}
+@keyframes sp-letter {
+  0% {
+    opacity: 0;
+    transform: translateY(14px) scaleY(0.6);
+  }
+  55% {
+    opacity: 1;
+    transform: translateY(-5px) scaleY(1.08);
+  }
+  80% {
+    transform: translateY(1px) scaleY(0.97);
+  }
+  100% {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* the counter */
+@property --sp-n {
+  syntax: '<integer>';
+  inherits: false;
+  initial-value: 0;
+}
+.sp-count {
+  font-size: 12px;
+  color: var(--ink-3);
+  opacity: 0;
+  animation: sp-fade-up 500ms var(--ease-out) calc(var(--c) + 300ms) forwards;
+}
+.sp-num {
+  --sp-n: 100;
+  counter-reset: n var(--sp-n);
+  animation: sp-count 1800ms cubic-bezier(0.45, 0.05, 0.2, 1) calc(var(--c) + 300ms) both;
+}
+.sp-num::after {
+  content: counter(n);
+}
+@keyframes sp-count {
+  from {
+    --sp-n: 0;
+  }
+  to {
+    --sp-n: 100;
+  }
+}
+
+/* footer: the promise and the skip hint */
+.sp-foot {
+  display: grid;
+  justify-items: center;
+  gap: 8px;
+  text-align: center;
+}
+.sp-promise {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--ink-2);
+  opacity: 0;
+  animation: sp-fade-up 600ms var(--ease-out) calc(var(--c) + 1700ms) forwards;
+}
+.sp-skip {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+  opacity: 0;
+  animation: sp-fade-up 500ms var(--ease-out) 1300ms forwards;
+}
+
+/* Plain-text message shown when the app cannot run (public/compat.js, or a
+ * crash that won't recover). Styled here because the security policy forbids
+ * inline style attributes. */
+.fallback-msg {
+  font: 16px/1.6 system-ui, sans-serif;
+  max-width: 26rem;
+  margin: 4rem auto;
+  padding: 0 1.5rem;
+  color: #15161a;
+}
+.fallback-msg h1 {
+  font-size: 1.5rem;
+  margin: 0 0 0.75rem;
+}

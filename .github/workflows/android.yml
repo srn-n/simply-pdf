@@ -1,0 +1,68 @@
+name: Android build
+
+# Builds the Android app from the same web code that runs on Vercel:
+#   - simply-pdf-debug.apk           install it straight on a phone to test
+#   - simply-pdf-release-unsigned.aab sign it on your PC, then upload to Google Play
+#   - SHA256SUMS.txt                  check the files arrived intact
+# The upload key never touches GitHub: the bundle is built unsigned.
+#
+# Runs only when started by hand (Actions → Android build → Run workflow), or
+# when a v* tag is pushed. Never on ordinary pushes: Actions minutes on a
+# private repo are limited. One run takes about 6-8 minutes.
+on:
+  workflow_dispatch:
+  push:
+    tags: ['v*']
+
+permissions:
+  contents: read
+
+concurrency:
+  group: android-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Install, check and build the app's copy of the web code
+        run: |
+          npm ci
+          npm run check
+          npm run build:android
+
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: 21
+
+      - uses: android-actions/setup-android@v3
+        with:
+          # The default asks for the retired 'tools' package and fails.
+          packages: 'platform-tools platforms;android-36 build-tools;36.0.0'
+
+      - name: Build the debug APK and the unsigned release bundle
+        working-directory: android
+        run: ./gradlew --no-daemon assembleDebug bundleRelease
+
+      - name: Collect the files
+        run: |
+          mkdir -p out
+          cp android/app/build/outputs/apk/debug/app-debug.apk out/simply-pdf-debug.apk
+          cp android/app/build/outputs/bundle/release/app-release.aab out/simply-pdf-release-unsigned.aab
+          (cd out && sha256sum * > SHA256SUMS.txt)
+          ls -la out
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: simply-pdf-android
+          path: out/
+          retention-days: 14

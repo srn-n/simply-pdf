@@ -1,0 +1,35 @@
+node_modules/
+dist/
+dist-android/
+coverage/
+# Copied from node_modules/pdfjs-dist at build time (vite.config.ts)
+public/pdfjs/
+.vercel/
+.DS_Store
+*.log
+.env*
+!.env.example
+
+# Android build output (the android/ project itself is committed).
+# assets/public and the capacitor.*.json files are written by `npx cap sync`.
+android/app/build/
+android/build/
+android/.gradle/
+android/.idea/
+android/local.properties
+android/app/src/main/assets/public/
+android/app/src/main/assets/capacitor.config.json
+android/app/src/main/assets/capacitor.plugins.json
+android/capacitor-cordova-android-plugins/
+
+# Signing keys and release outputs never go in git
+.signing/
+*.p12
+*.jks
+*.keystore
+*.apk
+*.aab
+release/
+
+# Agent hand-off notes stay on the owner's PC only (never committed)
+AGENTS.md

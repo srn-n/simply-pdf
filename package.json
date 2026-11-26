@@ -1,0 +1,49 @@
+{
+  "name": "simply-pdf",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Simply PDF: PDF tools that run entirely on your device, on the web and as an Android app. No accounts, no ads, no tracking, no guesswork.",
+  "type": "module",
+  "scripts": {
+    "dev": "vite --port=3000 --host=0.0.0.0",
+    "build": "vite build && node scripts/check-csp-build.mjs",
+    "build:android": "vite build --mode android && npx cap sync android",
+    "preview": "node scripts/serve.mjs",
+    "lint": "tsc --noEmit",
+    "test": "vitest run",
+    "check": "npm run lint && npm run test",
+    "apk": "npm run build:android && cd android && ./gradlew assembleDebug",
+    "cap:open": "npx cap open android",
+    "icons": "node scripts/make-icons.mjs"
+  },
+  "dependencies": {
+    "@capacitor/app": "^8.1.2",
+    "@capacitor/core": "^8.6.0",
+    "@capacitor/filesystem": "^8.1.5",
+    "@capacitor/share": "^8.0.3",
+    "@fontsource-variable/hanken-grotesk": "^5.3.0",
+    "@fontsource/caveat": "^5.3.0",
+    "@fontsource/martian-mono": "^5.3.0",
+    "core-js": "^3.51.0",
+    "jszip": "^3.10.2",
+    "lucide-react": "^1.65.0",
+    "motion": "^14.9.0",
+    "pdf-lib": "^1.17.1",
+    "pdfjs-dist": "^6.4.299",
+    "react": "^19.3.1",
+    "react-dom": "^19.3.1"
+  },
+  "devDependencies": {
+    "@capacitor/android": "^8.6.0",
+    "@capacitor/cli": "^8.6.0",
+    "@tailwindcss/vite": "^4.3.3",
+    "@types/node": "^22.14.0",
+    "@types/react": "^19.3.0",
+    "@types/react-dom": "^19.3.0",
+    "@vitejs/plugin-react": "^6.1.2",
+    "tailwindcss": "^4.3.3",
+    "typescript": "^7.0.2",
+    "vite": "^8.3.5",
+    "vitest": "^5.0.5"
+  }
+}

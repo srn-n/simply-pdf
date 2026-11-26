@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">Simply PDF</string>
+    <string name="title_activity_main">Simply PDF</string>
+    <string name="package_name">net.simplymadestudio.simplypdf</string>
+    <string name="custom_url_scheme">net.simplymadestudio.simplypdf</string>
+</resources>

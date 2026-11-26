@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--
+      Android 13+ can remember which launch screen to show next time
+      (SplashScreen#setSplashScreenTheme). MainActivity picks the one for the
+      app theme the person chose, so even the very first frame after tapping
+      the icon is in their theme. Colours = THEMES[].swatch[0] in src/lib/store.ts
+      (a unit test keeps them in step).
+    -->
+    <style name="SplashTheme.paper" parent="AppTheme.NoActionBarLaunch">
+        <item name="android:windowSplashScreenBackground">#F2EFE8</item>
+    </style>
+    <style name="SplashTheme.legal" parent="AppTheme.NoActionBarLaunch">
+        <item name="android:windowSplashScreenBackground">#FBF3C4</item>
+    </style>
+    <style name="SplashTheme.tracing" parent="AppTheme.NoActionBarLaunch">
+        <item name="android:windowSplashScreenBackground">#EDF1F3</item>
+    </style>
+    <style name="SplashTheme.carbon" parent="AppTheme.NoActionBarLaunch">
+        <item name="android:windowSplashScreenBackground">#0B0C12</item>
+    </style>
+    <style name="SplashTheme.darkroom" parent="AppTheme.NoActionBarLaunch">
+        <item name="android:windowSplashScreenBackground">#120C0C</item>
+    </style>
+    <style name="SplashTheme.slate" parent="AppTheme.NoActionBarLaunch">
+        <item name="android:windowSplashScreenBackground">#0F1714</item>
+    </style>
+</resources>
