@@ -9,7 +9,7 @@ Short, long-lived notes. `AGENTS.md` (local only) is the full, authoritative han
 - **Where:**
   - Repo folder: `C:\Working Projects\SimplyPDFWeb` (GitHub: `srn-n/simply-pdf`, private).
   - Release outputs, not a repo: `C:\Working Projects\SimplyPDFApp` (signed AAB/APK, store listing assets, upload notes, and the upload key in `.signing\`).
-  - Hosting: Vercel deploys `main`. Live URL: _to be added after the first deploy_.
+  - Hosting: Vercel deploys `main`. Live URL: https://simply-pdf-iota.vercel.app (Vercel project `simply-pdf`).
   - Google Play package: `net.simplymadestudio.simplypdf`.
 
 ## Promises (hard rules)
@@ -35,6 +35,5 @@ No accounts, no ads, no tracking, no guesswork:
 
 ## Open items
 
-- After the first deploy, add the live URL here and in `AGENTS.md`, and set an absolute `og:image` URL in `index.html`.
 - Add the web paragraph to the studio privacy policy. The draft is in `docs/releases/1.0.0.md`.
 - Ideas: a wider desktop layout; "Open with" file handling for the installed desktop app; page-number "distance from edge" option (waits for the owner's OK).
