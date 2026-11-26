@@ -41,7 +41,3 @@ The code works out at runtime whether it's in the app or a browser (`isNative` i
 ## Deploy the website
 
 Vercel builds `main` automatically using `vercel.json` (build command, output folder, security headers, caching). Keep Vercel Web Analytics and Speed Insights switched off.
-
-## For contributors and AI agents
-
-Agents and contributors work from an `AGENTS.md` hand-off file (house rules, architecture, security model, release steps). It's kept on the owner's machine only and isn't part of this repository. Every change also gets a Markdown record in `docs/releases/` or `docs/changes/`.
