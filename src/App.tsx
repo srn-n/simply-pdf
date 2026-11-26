@@ -4,6 +4,8 @@ import { APP } from './tools/registry';
 import { ErrorBoundary, Link, TabBar, Toasts, TopBar } from './components/Shell';
 import { Splash, shouldShowSplash } from './components/Splash';
 import { signalFirstFrame } from './lib/native-theme';
+import { isNative } from './lib/platform';
+import { WebLayout } from './web/WebLayout';
 import Home from './pages/Home';
 import ToolPage from './pages/ToolPage';
 
@@ -64,6 +66,16 @@ export default function App() {
     if (back) window.scrollTo(0, savedScroll());
   }, [screen, back]);
 
+  // The website has its own layout (header navigation, a desktop home page,
+  // tool pages with a tool list). The Android app keeps the layout below,
+  // unchanged. The MODE check is replaced at build time, so the Android build
+  // (vite build --mode android) leaves the website layout out completely.
+  if (import.meta.env.MODE !== 'android' && !isNative) {
+    return (
+      <WebLayout route={route} screen={screen} back={back} splash={splash} onSplashDone={() => setSplash(false)} notFound={<NotFound />} />
+    );
+  }
+
   return (
     <>
       {/* Ink blots behind everything, so the glass has colour to bend. */}
@@ -92,7 +104,7 @@ export default function App() {
   );
 }
 
-function NotFound() {
+export function NotFound() {
   return (
     <div className="mx-auto max-w-md space-y-4 px-6 py-24 text-center">
       <h1 className="text-3xl font-semibold tracking-tight">This screen isn't here</h1>

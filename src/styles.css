@@ -1117,3 +1117,39 @@ body::after {
   font-size: 1.5rem;
   margin: 0 0 0.75rem;
 }
+
+/* ------------------------------------------------------------------------
+ * Website only (src/web/). The Android app never uses these classes.
+ * --------------------------------------------------------------------- */
+
+/* The four promises on the web home page: each word gets a red strike line
+ * that draws across once, one after another, on the first visit. With motion
+ * off (or on a later visit) the lines are simply there. */
+.strike-word {
+  position: relative;
+  white-space: nowrap;
+}
+.strike-word::after {
+  content: '';
+  position: absolute;
+  left: -0.06em;
+  right: -0.06em;
+  top: 54%;
+  height: 0.085em;
+  border-radius: 1em;
+  background: var(--danger);
+  transform-origin: left center;
+  animation: strike-draw 560ms var(--ease-out-soft) both;
+  animation-delay: calc(450ms + var(--i, 0) * 200ms);
+}
+.seen .strike-word::after {
+  animation: none;
+}
+@keyframes strike-draw {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}

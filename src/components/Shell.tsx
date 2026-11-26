@@ -24,7 +24,7 @@ export function Link({ to, className, children, ...rest }: { to: string; classNa
 }
 
 /** Taps through the four stationery themes; the swatch hops each time. */
-function ThemeToggle() {
+export function ThemeToggle() {
   useSettings(); // re-render when the theme changes
   const [hop, setHop] = useState(0);
   const current = THEMES.findIndex((t) => t.id === resolvedTheme());
